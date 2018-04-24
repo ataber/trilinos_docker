@@ -1,4 +1,4 @@
-FROM ataber/petsc
+FROM ataber/slepc
 
 RUN apt-get update --fix-missing \
 &&  apt-get upgrade -y --force-yes \
