@@ -27,11 +27,12 @@ ENV CXX mpicxx
 ENV FC mpif90
 ENV FF mpif77
 
-ENV HOME /app
+ARG LIB_DIR /usr/lib
 
 #Build Trilinos
 ENV TRILINOS_VERSION 12-8-1
-RUN wget https://github.com/trilinos/Trilinos/archive/trilinos-release-$TRILINOS_VERSION.tar.gz && \
+RUN cd /tmp && \
+    wget https://github.com/trilinos/Trilinos/archive/trilinos-release-$TRILINOS_VERSION.tar.gz && \
     tar xfz trilinos-release-$TRILINOS_VERSION.tar.gz && \
     mkdir Trilinos-trilinos-release-$TRILINOS_VERSION/build && \
     cd Trilinos-trilinos-release-$TRILINOS_VERSION/build && \
@@ -41,7 +42,7 @@ RUN wget https://github.com/trilinos/Trilinos/archive/trilinos-release-$TRILINOS
      -D CMAKE_CXX_FLAGS="-O3" \
      -D CMAKE_C_FLAGS="-O3" \
      -D CMAKE_FORTRAN_FLAGS="-O5" \
-     -D CMAKE_INSTALL_PREFIX:PATH=$HOME/libs/trilinos-$TRILINOS_VERSION \
+     -D CMAKE_INSTALL_PREFIX:PATH=$LIB_DIR/trilinos-$TRILINOS_VERSION \
      -D CMAKE_VERBOSE_MAKEFILE=FALSE \
      -D TPL_ENABLE_Boost=OFF \
      -D TPL_ENABLE_MPI=ON \
@@ -76,8 +77,8 @@ RUN wget https://github.com/trilinos/Trilinos/archive/trilinos-release-$TRILINOS
      -D Trilinos_VERBOSE_CONFIGURE=FALSE \
      .. && \
    make -j4 && make install && \
-   cd $HOME && \
+   cd /tmp && \
    rm -rf Trilinos-trilinos-release-* &&\
    rm -rf trilinos-release-*
-ENV TRILINOS_DIR $HOME/libs/trilinos-$TRILINOS_VERSION
+ENV TRILINOS_DIR $LIB_DIR/trilinos-$TRILINOS_VERSION
 
