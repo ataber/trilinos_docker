@@ -27,7 +27,7 @@ ENV CXX mpicxx
 ENV FC mpif90
 ENV FF mpif77
 
-ARG LIB_DIR /usr/lib
+ENV LIB_DIR /usr/lib
 
 #Build Trilinos
 ENV TRILINOS_VERSION 12-8-1
