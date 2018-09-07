@@ -74,7 +74,7 @@ RUN cd /tmp && \
      -D Trilinos_EXTRA_LINK_FLAGS="-lgfortran" \
      -D Trilinos_VERBOSE_CONFIGURE=FALSE \
      .. && \
-   make -j4 && make install && \
+   make -j $(cat /proc/cpuinfo | grep processor | wc -l) && make install && \
    cd /tmp && \
    rm -rf Trilinos-trilinos-release-* &&\
    rm -rf trilinos-release-*
