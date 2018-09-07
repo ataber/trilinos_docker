@@ -27,10 +27,8 @@ ENV CXX mpicxx
 ENV FC mpif90
 ENV FF mpif77
 
-ENV LIB_DIR /usr/lib
-
 #Build Trilinos
-ENV TRILINOS_VERSION 12-8-1
+ENV TRILINOS_VERSION 12-12-1
 RUN cd /tmp && \
     wget https://github.com/trilinos/Trilinos/archive/trilinos-release-$TRILINOS_VERSION.tar.gz && \
     tar xfz trilinos-release-$TRILINOS_VERSION.tar.gz && \
@@ -42,7 +40,7 @@ RUN cd /tmp && \
      -D CMAKE_CXX_FLAGS="-O3" \
      -D CMAKE_C_FLAGS="-O3" \
      -D CMAKE_FORTRAN_FLAGS="-O5" \
-     -D CMAKE_INSTALL_PREFIX:PATH=$LIB_DIR/trilinos-$TRILINOS_VERSION \
+     -D CMAKE_INSTALL_PREFIX:PATH=/usr/lib/trilinos-$TRILINOS_VERSION \
      -D CMAKE_VERBOSE_MAKEFILE=FALSE \
      -D TPL_ENABLE_Boost=OFF \
      -D TPL_ENABLE_MPI=ON \
@@ -80,5 +78,5 @@ RUN cd /tmp && \
    cd /tmp && \
    rm -rf Trilinos-trilinos-release-* &&\
    rm -rf trilinos-release-*
-ENV TRILINOS_DIR $LIB_DIR/trilinos-$TRILINOS_VERSION
+ENV TRILINOS_DIR /usr/lib/trilinos-$TRILINOS_VERSION
 
