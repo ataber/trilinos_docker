@@ -45,20 +45,20 @@ RUN cd /tmp && \
      -D Trilinos_ASSERT_MISSING_PACKAGES:BOOL=OFF \
      -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \
      -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
-     -D Trilinos_ENABLE_Amesos:BOOL=ON \
+     -D Trilinos_ENABLE_Amesos:BOOL=OFF \
      -D Trilinos_ENABLE_AztecOO:BOOL=ON \
      -D Trilinos_ENABLE_Epetra:BOOL=ON \
      -D Trilinos_ENABLE_EpetraExt:BOOL=ON \
      -D Trilinos_ENABLE_Ifpack:BOOL=ON \
      -D Trilinos_ENABLE_Jpetra:BOOL=ON \
      -D Trilinos_ENABLE_Kokkos:BOOL=ON \
-     -D Trilinos_ENABLE_Komplex:BOOL=ON \
+     -D Trilinos_ENABLE_Komplex:BOOL=OFF \
      -D Trilinos_ENABLE_ML:BOOL=ON \
      -D Trilinos_ENABLE_MOOCHO:BOOL=ON \
      -D Trilinos_ENABLE_MueLu:BOOL=ON \
      -D Trilinos_ENABLE_OpenMP:BOOL=OFF \
      -D Trilinos_ENABLE_Piro:BOOL=ON \
-     -D Trilinos_ENABLE_Rythmos:BOOL=ON \
+     -D Trilinos_ENABLE_Rythmos:BOOL=OFF \
      -D Trilinos_ENABLE_STK:BOOL=OFF \
      -D Trilinos_ENABLE_Sacado=ON \
      -D Trilinos_ENABLE_TESTS:BOOL=OFF \
@@ -68,7 +68,7 @@ RUN cd /tmp && \
      -D Trilinos_ENABLE_Tpetra:BOOL=ON \
      -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
      -D Trilinos_EXTRA_LINK_FLAGS="-lgfortran" \
-     -D Trilinos_VERBOSE_CONFIGURE=FALSE \
+     -D Trilinos_VERBOSE_CONFIGURE=TRUE \
      .. && \
    make -j $(cat /proc/cpuinfo | grep processor | wc -l) && make install && \
    cd /tmp && \
