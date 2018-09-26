@@ -31,7 +31,7 @@ RUN cd /tmp && \
     mkdir Trilinos-trilinos-release-$TRILINOS_VERSION/build && \
     cd Trilinos-trilinos-release-$TRILINOS_VERSION/build && \
     cmake \
-     -D BUILD_SHARED_LIBS=ON \
+     -D BUILD_SHARED_LIBS=OFF \
      -D CMAKE_BUILD_TYPE=RELEASE \
      -D CMAKE_CXX_FLAGS="-O3" \
      -D CMAKE_C_FLAGS="-O3" \
@@ -43,7 +43,7 @@ RUN cd /tmp && \
      -D TPL_ENABLE_Netcdf:BOOL=OFF \
      -D TrilinosFramework_ENABLE_MPI:BOOL=ON \
      -D Trilinos_ASSERT_MISSING_PACKAGES:BOOL=OFF \
-     -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
+     -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=OFF \
      -D Trilinos_ENABLE_ALL_PACKAGES:BOOL=OFF \
      -D Trilinos_ENABLE_Amesos:BOOL=ON \
      -D Trilinos_ENABLE_AztecOO:BOOL=ON \
