@@ -66,6 +66,10 @@ RUN cd /tmp && \
      -D Trilinos_ENABLE_Teuchos:BOOL=ON \
      -D Trilinos_ENABLE_Thyra:BOOL=ON \
      -D Trilinos_ENABLE_Tpetra:BOOL=ON \
+     -D Trilinos_ENABLE_NOX:BOOL=ON \
+     -D NOX_ENABLE_Epetra:BOOL=ON \
+     -D NOX_ENABLE_EpetraExt:BOOL=ON \
+     -D NOX_ENABLE_LAPACK:BOOL=ON \
      -D Trilinos_ENABLE_TrilinosCouplings:BOOL=ON \
      -D Trilinos_EXTRA_LINK_FLAGS="-lgfortran" \
      -D Trilinos_VERBOSE_CONFIGURE=TRUE \
